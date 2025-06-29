@@ -1,3 +1,18 @@
+"""
+E-commerce Shopping Cart System
+
+This repository contains a simple e-commerce system that manages product listings
+and shopping cart functionality. The system handles:
+
+- Product listings with location-based shipping costs
+- Shopping cart management (add/remove items)
+- Stock tracking and updates
+- Total price calculation including shipping
+
+The system distinguishes between Java and non-Java locations for different
+shipping costs (Rp. 2000 for Java, Rp. 5000 for other locations).
+"""
+
 class Listing:
 
     def __init__(self, name, location, price, stock):
@@ -56,34 +71,36 @@ class Shoppingcart:
 
         return total_price
 
-mixer   = Listing('mixer', 'jawa', 50000, 20)
-blender = Listing('blender', 'kalimantan', 30000, 20)
-tas     = Listing('tas murah kw1', 'kalimantan', 15000, 2)
+def main():
+    """Main function to demonstrate the shopping cart functionality."""
+    # Create product listings
+    mixer   = Listing('mixer', 'jawa', 50000, 20)
+    blender = Listing('blender', 'kalimantan', 30000, 20)
+    tas     = Listing('tas murah kw1', 'kalimantan', 15000, 2)
 
+    # Create shopping cart
+    s = Shoppingcart()
 
-# s = Shoppingcart()
-#
-# print(b1.stock)
-# s.add_items(b1)
-# print(s.items)
-# print(s.price)
-# print(b1.stock)
+    # Demonstrate adding items and stock tracking
+    print(f"stock mixer: {mixer.stock}")
 
-# if item.location == 'luar jawa':
-#     self.price += 5000
-# else:
-#     self.price += 2000
+    # Add mixer to shopping cart
+    s.add_items(mixer)
 
+    # Current stock
+    print(f"stock mixer: {mixer.stock}")
 
+    # Total price need to pay
+    print(f"total price: {s.price}")
 
+    # Remove mixer from shopping cart
+    s.remove_items(mixer)
 
+    # Current stock
+    print(f"stock mixer: {mixer.stock}")
 
-'''
-Input lokasi  : jawa dan luar jawa
-jawa          : 2000
-luar jawa     : 5000
-consumer      : dari jawa
+    # Total price need to pay
+    print(f"total price: {s.price}")
 
-pengembangan :
-1. bisa menentukan berapa byk yg ditambah dan hapus
-'''
+if __name__ == "__main__":
+    main()
